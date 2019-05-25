@@ -23,11 +23,11 @@ public class SideScrollingWorld extends World
     //              Should be a resolution that's a multiple of TILE_SIZE
     private static final int VISIBLE_WIDTH = 640;
     private static final int VISIBLE_HEIGHT = 480;
-    
+
     // Additional useful constants based on world size
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
-    
+
     // Defining the boundaries of the scrollable world
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
@@ -38,6 +38,10 @@ public class SideScrollingWorld extends World
 
     // Track whether game is on
     private boolean isGameOver;
+
+    //
+    
+    
 
     /**
      * Constructor for objects of class SideScrollingWorld.
@@ -62,12 +66,29 @@ public class SideScrollingWorld extends World
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        addLeftGround();
-        addFences();
-        addMetalPlateSteps();
-        addClouds();
-        addRightGround();
+        // addLeftGround();
+        // addFences();
+        // addMetalPlateSteps();
+        // addClouds();
+        // addRightGround();
+        // Add some metal plates
+        for (int i = 0; i <= 60; i+= 1){
+            int x = HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = 14 * TILE_SIZE + HALF_TILE_SIZE;
+            Ground ground = new Ground(x,y);
+            addObject(ground,x,y);
+
+        }
+        for (int i = 0; i <= 60; i+= 1){
+            int x = HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = HALF_TILE_SIZE;
+            Ground ground = new Ground(x,y);
+            addObject(ground,x,y);
+
+        }
+
         addHero();
+        cCoin();
     }
 
     /**
@@ -152,19 +173,7 @@ public class SideScrollingWorld extends World
         }
     }
 
-    /**
-     * Add a few clouds for the opening scene.
-     */
-    private void addClouds()
-    {
-        Cloud cloud1 = new Cloud(170, 125);
-        addObject(cloud1, 170, 125);
-        Cloud cloud2 = new Cloud(450, 175);
-        addObject(cloud2, 450, 175);
-        Cloud cloud3 = new Cloud(775, 50);
-        addObject(cloud3, 775, 50);
-    }
-
+    
     /**
      * Act
      * 
@@ -172,21 +181,21 @@ public class SideScrollingWorld extends World
      */
     public void act()
     {
+        
     }
-
     /**
      * Add the hero to the world.
      */
     private void addHero()
     {
         // Initial horizontal position
-        int initialX = TILE_SIZE * 3;
+        int initialX = TILE_SIZE * 10 + HALF_TILE_SIZE;
 
         // Instantiate the hero object
         theHero = new Hero(initialX);
 
         // Add hero in bottom left corner of screen
-        addObject(theHero, initialX, getHeight() / 4 * 3);
+        addObject(theHero, initialX, 8 * TILE_SIZE + HALF_TILE_SIZE);
     }
 
     /**
@@ -234,6 +243,25 @@ public class SideScrollingWorld extends World
     public Hero getHero()
     {
         return theHero;
+    }
+
+    private void deathPipes(){
+        for (int i = 0; i <= 60; i+= 1){
+            int x = HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = HALF_TILE_SIZE;
+            Ground ground = new Ground(x,y);
+            addObject(ground,x,y);
+
+        }
+    }
+
+    private void cCoin(){
+
+        int x = 4 * TILE_SIZE + HALF_TILE_SIZE;
+        int y = 10 * TILE_SIZE;
+        Cloud cc = new Cloud(x,y);
+        addObject(cc,x,y);
+
     }
 
     /**

@@ -21,10 +21,10 @@ public class Hero extends Actor
     private int deltaY = 4;
 
     // Acceleration for falls
-    private int acceleration = 2;
+    private int acceleration = 1;
 
     // Strength of a jump
-    private int jumpStrength = -24;
+    private int jumpStrength = -7;
 
     // Track current theoretical position in wider "scrollable" world
     private int currentScrollableWorldXPosition;
@@ -97,10 +97,12 @@ public class Hero extends Actor
     {
         checkKeys();
         checkFall();
+        moveRight();
         if (!isGameOver)
         {
             checkGameOver();
         }
+        checkCollision();
     }
 
     /**
@@ -108,29 +110,16 @@ public class Hero extends Actor
      */
     private void checkKeys()
     {
-        // Walking keys
-        if (Greenfoot.isKeyDown("left") && !isGameOver)
-        {
-            moveLeft();
-        }
-        else if (Greenfoot.isKeyDown("right") && !isGameOver)
-        {
-            moveRight();
-        }
-        else
-        {
-            // Standing still; reset walking animation
-            walkingFrames = 0;
-        }
+        //The hero of this game will not be able to move left or right.
+        //He can only jump in order to make this game harder
 
         // Jumping
         if (Greenfoot.isKeyDown("space") && !isGameOver)
         {
             // Only able to jump when on a solid object
-            if (onPlatform())
-            {
-                jump();
-            }
+
+            jump();
+
         }
     }
 
@@ -160,22 +149,24 @@ public class Hero extends Actor
             Actor frontUnder = getOneObjectAtOffset(getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
             Actor rearUnder = getOneObjectAtOffset(0 - getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
 
+            
             // Bump the hero back up so that they are not "submerged" in a platform object
-            if (directlyUnder != null)
-            {
-                int correctedYPosition = directlyUnder.getY() - directlyUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
-                setLocation(getX(), correctedYPosition);
-            }
-            if (frontUnder != null)
-            {
-                int correctedYPosition = frontUnder.getY() - frontUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
-                setLocation(getX(), correctedYPosition);
-            }
-            if (rearUnder != null)
-            {
-                int correctedYPosition = rearUnder.getY() - rearUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
-                setLocation(getX(), correctedYPosition);
-            }
+            // if (directlyUnder != null)
+            // {
+                // int correctedYPosition = directlyUnder.getY() - directlyUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+                // setLocation(getX(), correctedYPosition);
+            // }
+            // if (frontUnder != null)
+            // {
+                // int correctedYPosition = frontUnder.getY() - frontUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+                // setLocation(getX(), correctedYPosition);
+            // }
+            // if (rearUnder != null)
+            // {
+                // int correctedYPosition = rearUnder.getY() - rearUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+                // setLocation(getX(), correctedYPosition);
+            // }
+            
         }
         else
         {
@@ -192,16 +183,29 @@ public class Hero extends Actor
         Actor directlyUnder = getOneObjectAtOffset(0, getImage().getHeight() / 2, Platform.class);
         Actor frontUnder = getOneObjectAtOffset(getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
         Actor rearUnder = getOneObjectAtOffset(0 - getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
+        //Get an reference to a solid object above the hero
+        Actor directlyBelow = getOneObjectAtOffset(0, -1 * getImage().getHeight() / 2, Platform.class);
+        Actor frontBelow = getOneObjectAtOffset(getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
+        Actor rearBelow = getOneObjectAtOffset(0 - getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
 
-        // If there is no solid object below (or slightly in front of or behind) the hero...
-        if (directlyUnder == null && frontUnder == null && rearUnder == null)
+        // If there is no solid object below (or slightly in front of or behind) or above the hero...
+        if (directlyUnder == null &&
+        frontUnder == null && 
+        rearUnder == null && 
+        directlyBelow == null &&
+        frontBelow == null &&
+        rearBelow == null
+        ) 
         {
             return false;   // Not on a solid object
         }
         else
         {
             return true;
+            
         }
+
+
     }
 
     /**
@@ -502,6 +506,13 @@ public class Hero extends Actor
 
         } 
 
+    }
+
+    public void checkCollision(){
+        //if(isTouching(Ground.class)){
+        //  Greenfoot.stop();
+
+        //}
     }
 
     /**
