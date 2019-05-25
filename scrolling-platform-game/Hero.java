@@ -166,7 +166,7 @@ public class Hero extends Actor
                 // int correctedYPosition = rearUnder.getY() - rearUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
                 // setLocation(getX(), correctedYPosition);
             // }
-            
+            Greenfoot.stop();
         }
         else
         {
@@ -184,17 +184,22 @@ public class Hero extends Actor
         Actor frontUnder = getOneObjectAtOffset(getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
         Actor rearUnder = getOneObjectAtOffset(0 - getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
         //Get an reference to a solid object above the hero
-        Actor directlyBelow = getOneObjectAtOffset(0, -1 * getImage().getHeight() / 2, Platform.class);
-        Actor frontBelow = getOneObjectAtOffset(getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
-        Actor rearBelow = getOneObjectAtOffset(0 - getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
+        Actor directlyAbove = getOneObjectAtOffset(0, -1 * getImage().getHeight() / 2, Platform.class);
+        Actor frontAbove = getOneObjectAtOffset(getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
+        Actor rearAbove = getOneObjectAtOffset(0 - getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
+        //Get a reference to a solid object in front of the hero
+        
+       
+        
+        
 
-        // If there is no solid object below (or slightly in front of or behind) or above the hero...
+        // If there is no solid object below (or slightly in front of or behind) or above or in front the hero...
         if (directlyUnder == null &&
         frontUnder == null && 
         rearUnder == null && 
-        directlyBelow == null &&
-        frontBelow == null &&
-        rearBelow == null
+        directlyAbove == null &&
+        frontAbove == null &&
+        rearAbove == null
         ) 
         {
             return false;   // Not on a solid object
@@ -539,4 +544,5 @@ public class Hero extends Actor
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
     }
+    
 }
