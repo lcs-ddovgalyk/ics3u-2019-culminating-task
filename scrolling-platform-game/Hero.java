@@ -188,6 +188,7 @@ public class Hero extends Actor
         Actor frontAbove = getOneObjectAtOffset(getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
         Actor rearAbove = getOneObjectAtOffset(0 - getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
         //Get a reference to a solid object in front of the hero
+        Actor directlyInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0 ,Platform.class);
         
        
         
@@ -199,7 +200,8 @@ public class Hero extends Actor
         rearUnder == null && 
         directlyAbove == null &&
         frontAbove == null &&
-        rearAbove == null
+        rearAbove == null &&
+        directlyInFront == null
         ) 
         {
             return false;   // Not on a solid object
