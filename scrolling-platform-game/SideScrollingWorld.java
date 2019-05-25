@@ -89,6 +89,7 @@ public class SideScrollingWorld extends World
 
         addHero();
         cCoin();
+        dontTouch();
     }
 
     /**
@@ -195,7 +196,7 @@ public class SideScrollingWorld extends World
         theHero = new Hero(initialX);
 
         // Add hero in bottom left corner of screen
-        addObject(theHero, initialX, 8 * TILE_SIZE + HALF_TILE_SIZE);
+        addObject(theHero, initialX, 2 * TILE_SIZE + HALF_TILE_SIZE);
     }
 
     /**
@@ -262,6 +263,12 @@ public class SideScrollingWorld extends World
         Cloud cc = new Cloud(x,y);
         addObject(cc,x,y);
 
+    }
+    private void dontTouch(){
+        int x = 5 * TILE_SIZE + HALF_TILE_SIZE;
+        int y = 10 * TILE_SIZE;
+        MetalPlate bad = new MetalPlate(x,y);
+        addObject(bad,x,y);
     }
 
     /**
