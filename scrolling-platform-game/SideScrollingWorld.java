@@ -40,8 +40,7 @@ public class SideScrollingWorld extends World
     private boolean isGameOver;
 
     //
-    
-    
+
 
     /**
      * Constructor for objects of class SideScrollingWorld.
@@ -90,6 +89,8 @@ public class SideScrollingWorld extends World
         addHero();
         cCoin();
         dontTouch();
+        dontTouch1();
+        
     }
 
     /**
@@ -174,7 +175,6 @@ public class SideScrollingWorld extends World
         }
     }
 
-    
     /**
      * Act
      * 
@@ -182,15 +182,16 @@ public class SideScrollingWorld extends World
      */
     public void act()
     {
-        
+
     }
+
     /**
      * Add the hero to the world.
      */
     private void addHero()
     {
         // Initial horizontal position
-        int initialX = TILE_SIZE * 10 + HALF_TILE_SIZE;
+        int initialX = TILE_SIZE;
 
         // Instantiate the hero object
         theHero = new Hero(initialX);
@@ -264,11 +265,34 @@ public class SideScrollingWorld extends World
         addObject(cc,x,y);
 
     }
+
     private void dontTouch(){
-        int x = 5 * TILE_SIZE + HALF_TILE_SIZE;
-        int y = 10 * TILE_SIZE;
+        //creates the first pair of obstacles 
+        //x position determines where the obstacles will be
+        int x = 10 * TILE_SIZE + HALF_TILE_SIZE;
+        //where the top part will be
+        int y = 14 * TILE_SIZE;
+        //where the bottom part will be
+        int yb = 4 * TILE_SIZE;
         MetalPlate bad = new MetalPlate(x,y);
         addObject(bad,x,y);
+        MetalPlateDown downBad = new MetalPlateDown(x,y);
+        addObject(downBad,x,yb);
+        //this is so the won't be any gaps between the obstacles and the top/bottom part
+        JustTheBottom bottom = new JustTheBottom(x,y);
+        addObject(bottom,x,TILE_SIZE + HALF_TILE_SIZE);
+    }
+    private void dontTouch1(){
+        //creates the second pair of obstacles 
+        int x = 15 * TILE_SIZE + HALF_TILE_SIZE;
+        int y = 10 * TILE_SIZE;
+        int yb = TILE_SIZE;
+        MetalPlate bad = new MetalPlate(x,y);
+        addObject(bad,x,y);
+        MetalPlateDown downBad = new MetalPlateDown(x,y);
+        addObject(downBad,x,yb);
+        JustTheBottom bottom = new JustTheBottom(x,y);
+        addObject(bottom,x, 14 * TILE_SIZE + HALF_TILE_SIZE);
     }
 
     /**
