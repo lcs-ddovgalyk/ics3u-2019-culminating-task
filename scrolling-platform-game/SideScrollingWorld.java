@@ -41,7 +41,6 @@ public class SideScrollingWorld extends World
 
     //
 
-
     /**
      * Constructor for objects of class SideScrollingWorld.
      */
@@ -89,8 +88,11 @@ public class SideScrollingWorld extends World
         addHero();
         cCoin();
         dontTouch();
-        dontTouch1();
-        
+        dontTouch2();
+        dontTouch3();
+        dontTouch4();
+        dontTouch5();
+        dontTouch6();
     }
 
     /**
@@ -282,19 +284,90 @@ public class SideScrollingWorld extends World
         JustTheBottom bottom = new JustTheBottom(x,y);
         addObject(bottom,x,TILE_SIZE + HALF_TILE_SIZE);
     }
-    private void dontTouch1(){
+
+    private void dontTouch2(){
         //creates the second pair of obstacles 
+        //x position determines where the obstacles will be
         int x = 15 * TILE_SIZE + HALF_TILE_SIZE;
+        //where the top part will be
         int y = 10 * TILE_SIZE;
+        //where the bottom part will be
         int yb = TILE_SIZE;
         MetalPlate bad = new MetalPlate(x,y);
         addObject(bad,x,y);
         MetalPlateDown downBad = new MetalPlateDown(x,y);
         addObject(downBad,x,yb);
-                //this is so the won't be any gaps between the obstacles and the top/bottom part
-
+        //this is so the won't be any gaps between the obstacles and the top/bottom part
         JustTheBottom bottom = new JustTheBottom(x,y);
         addObject(bottom,x, 14 * TILE_SIZE + HALF_TILE_SIZE);
+    }
+
+    private void dontTouch3(){
+        //creates the third pair of obstacles 
+        //x position determines where the obstacles will be
+        int x = 20 * TILE_SIZE + HALF_TILE_SIZE;
+        //where the top part will be
+        int y = 16 * TILE_SIZE;
+        //where the bottom part will be
+        int yb = 6 * TILE_SIZE;
+        MetalPlate bad = new MetalPlate(x,y);
+        addObject(bad,x,y);
+        MetalPlateDown downBad = new MetalPlateDown(x,y);
+        addObject(downBad,x,yb);
+        //this is so the won't be any gaps between the obstacles and the top/bottom part
+        JustTheBottom bottom = new JustTheBottom(x,y);
+        addObject(bottom,x, 2 * TILE_SIZE);
+    }
+
+    private void dontTouch4(){
+        //creates the forth pair of obstacles 
+        //x position determines where the obstacles will be
+        int x = 25 * TILE_SIZE + HALF_TILE_SIZE;
+        //where the top part will be
+        int y = 15 * TILE_SIZE;
+        //where the bottom part will be
+        int yb = 5 * TILE_SIZE;
+        MetalPlate bad = new MetalPlate(x,y);
+        addObject(bad,x,y);
+        MetalPlateDown downBad = new MetalPlateDown(x,y);
+        addObject(downBad,x,yb);
+        //this is so the won't be any gaps between the obstacles and the top/bottom part
+        JustTheBottom bottom = new JustTheBottom(x,y);
+        addObject(bottom,x, TILE_SIZE + HALF_TILE_SIZE);
+    }
+
+    private void dontTouch5(){
+        //creates the fifth pair of obstacles 
+        //x position determines where the obstacles will be
+        int x = 30 * TILE_SIZE + HALF_TILE_SIZE;
+        //where the top part will be
+        int y = 21 * HALF_TILE_SIZE;
+        //where the bottom part will be
+        int yb = 1 * HALF_TILE_SIZE;
+        MetalPlate bad = new MetalPlate(x,y);
+        addObject(bad,x,y);
+        MetalPlateDown downBad = new MetalPlateDown(x,y);
+        addObject(downBad,x,yb);
+        //this is so the won't be any gaps between the obstacles and the top/bottom part
+        JustTheBottom bottom = new JustTheBottom(x,y);
+        addObject(bottom,x, 14 *TILE_SIZE + HALF_TILE_SIZE);
+    }
+
+    private void dontTouch6(){
+        //creates the six pair of obstacles 
+        //x position determines where the obstacles will be
+        int x = 35 * TILE_SIZE + HALF_TILE_SIZE;
+        //where the top part will be
+        int y = 14 * TILE_SIZE;
+        //where the bottom part will be
+        int yb = 4 * TILE_SIZE;
+        MetalPlate bad = new MetalPlate(x,y);
+        addObject(bad,x,y);
+        MetalPlateDown downBad = new MetalPlateDown(x,y);
+        addObject(downBad,x,yb);
+        //this is so the won't be any gaps between the obstacles and the top/bottom part
+        JustTheBottom bottom = new JustTheBottom(x,y);
+        addObject(bottom,x,TILE_SIZE + HALF_TILE_SIZE);
     }
 
     /**
