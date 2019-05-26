@@ -291,6 +291,8 @@ public class SideScrollingWorld extends World
         addObject(bad,x,y);
         MetalPlateDown downBad = new MetalPlateDown(x,y);
         addObject(downBad,x,yb);
+                //this is so the won't be any gaps between the obstacles and the top/bottom part
+
         JustTheBottom bottom = new JustTheBottom(x,y);
         addObject(bottom,x, 14 * TILE_SIZE + HALF_TILE_SIZE);
     }
