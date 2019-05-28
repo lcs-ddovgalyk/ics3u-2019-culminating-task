@@ -367,8 +367,7 @@ public class Hero extends Actor
                 isGameOver = true;
                 world.setGameOver();
 
-                // Tell the user game is over
-                world.showText("LEVEL COMPLETE", world.getWidth() / 2, world.getHeight() / 2);
+                                
             }
 
         }
