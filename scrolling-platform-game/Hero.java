@@ -410,7 +410,7 @@ public class Hero extends Actor
             for (FarAwayItem farAwayItem : farAwayItems)
             {
                 // FarAwayItems move left to make hero appear to move right
-                farAwayItem.moveLeft(deltaX / 4);
+                farAwayItem.moveLeft(-1/60);
             }
 
         }   

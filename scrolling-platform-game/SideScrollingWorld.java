@@ -56,6 +56,7 @@ public class SideScrollingWorld extends World
 
         // Game on
         isGameOver = false;
+
     }
 
     /**
@@ -87,18 +88,16 @@ public class SideScrollingWorld extends World
 
         addHero();
         cCoin();
+        cCoin2();
+        cCoin3();
         dontTouch();
         dontTouch2();
         dontTouch3();
         dontTouch4();
         dontTouch5();
         dontTouch6();
-        cCoin2();
-        cCoin3();
-        
 
     }
-
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */
@@ -187,10 +186,23 @@ public class SideScrollingWorld extends World
      * This method is called approximately 60 times per second.
      */
     public void act(){ 
-        showText("Score: " + score, 100, 100);
+        showText("Coins collected: ", 100, 100);
+        int x = 200;
+        int y = 100;
+        Cloud scorecoin = new Cloud(x,y);
+        if(score == 1){
+            addObject(scorecoin,200,100);
+            
+        }
+        if(score == 2){
+            addObject(scorecoin,220,100);
+            
+        }
+        if(score == 3){
+            addObject(scorecoin,240,100);
+            
+        }
 
-       
-        
     }
 
     /**
@@ -271,22 +283,27 @@ public class SideScrollingWorld extends World
         int y = 10 * TILE_SIZE;
         Fence cc = new Fence(x,y);
         addObject(cc,x,y);
+        
 
     }
+
     private void cCoin2(){
-
-        int x = 4 * TILE_SIZE + HALF_TILE_SIZE;
-        int y = 10 * TILE_SIZE;
-        Fence cc = new Fence(x,y);
-        addObject(cc,x,y);
-
-    }
-    private void cCoin3(){
 
         int x = 17 * TILE_SIZE + HALF_TILE_SIZE;
         int y = 9 * TILE_SIZE;
         Fence cc = new Fence(x,y);
         addObject(cc,x,y);
+        
+
+    }
+
+    private void cCoin3(){
+
+        int x = 35 * TILE_SIZE + HALF_TILE_SIZE;
+        int y = 10 * TILE_SIZE;
+        Fence cc = new Fence(x,y);
+        addObject(cc,x,y);
+        
 
     }
 
