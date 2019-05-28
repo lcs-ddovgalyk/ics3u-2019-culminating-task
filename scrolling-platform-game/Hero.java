@@ -49,6 +49,7 @@ public class Hero extends Actor
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
 
+
     /**
      * Constructor
      * 
@@ -98,11 +99,20 @@ public class Hero extends Actor
         checkKeys();
         checkFall();
         moveRight();
+
         if (!isGameOver)
         {
             checkGameOver();
         }
         checkCollision();
+        if(isTouching(Fence.class)){
+            removeTouching(Fence.class);
+            SideScrollingWorld world = (SideScrollingWorld)getWorld();
+            world.score = world.score + 1;
+
+            
+        }
+
     }
 
     /**
@@ -149,22 +159,21 @@ public class Hero extends Actor
             Actor frontUnder = getOneObjectAtOffset(getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
             Actor rearUnder = getOneObjectAtOffset(0 - getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
 
-            
             // Bump the hero back up so that they are not "submerged" in a platform object
             // if (directlyUnder != null)
             // {
-                // int correctedYPosition = directlyUnder.getY() - directlyUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
-                // setLocation(getX(), correctedYPosition);
+            // int correctedYPosition = directlyUnder.getY() - directlyUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+            // setLocation(getX(), correctedYPosition);
             // }
             // if (frontUnder != null)
             // {
-                // int correctedYPosition = frontUnder.getY() - frontUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
-                // setLocation(getX(), correctedYPosition);
+            // int correctedYPosition = frontUnder.getY() - frontUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+            // setLocation(getX(), correctedYPosition);
             // }
             // if (rearUnder != null)
             // {
-                // int correctedYPosition = rearUnder.getY() - rearUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
-                // setLocation(getX(), correctedYPosition);
+            // int correctedYPosition = rearUnder.getY() - rearUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
+            // setLocation(getX(), correctedYPosition);
             // }
             Greenfoot.stop();
         }
@@ -189,10 +198,7 @@ public class Hero extends Actor
         Actor rearAbove = getOneObjectAtOffset(0 - getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
         //Get a reference to a solid object in front of the hero
         Actor directlyInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0 ,Platform.class);
-        
-       
-        
-        
+
 
         // If there is no solid object below (or slightly in front of or behind) or above or in front the hero...
         if (directlyUnder == null &&
@@ -209,9 +215,8 @@ public class Hero extends Actor
         else
         {
             return true;
-            
-        }
 
+        }
 
     }
 
@@ -546,5 +551,5 @@ public class Hero extends Actor
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
     }
-    
+
 }

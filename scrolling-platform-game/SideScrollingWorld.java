@@ -40,7 +40,7 @@ public class SideScrollingWorld extends World
     private boolean isGameOver;
 
     //
-
+    int score; 
     /**
      * Constructor for objects of class SideScrollingWorld.
      */
@@ -93,6 +93,10 @@ public class SideScrollingWorld extends World
         dontTouch4();
         dontTouch5();
         dontTouch6();
+        cCoin2();
+        cCoin3();
+        
+
     }
 
     /**
@@ -182,9 +186,11 @@ public class SideScrollingWorld extends World
      * 
      * This method is called approximately 60 times per second.
      */
-    public void act()
-    {
+    public void act(){ 
+        showText("Score: " + score, 100, 100);
 
+       
+        
     }
 
     /**
@@ -263,7 +269,23 @@ public class SideScrollingWorld extends World
 
         int x = 4 * TILE_SIZE + HALF_TILE_SIZE;
         int y = 10 * TILE_SIZE;
-        Cloud cc = new Cloud(x,y);
+        Fence cc = new Fence(x,y);
+        addObject(cc,x,y);
+
+    }
+    private void cCoin2(){
+
+        int x = 4 * TILE_SIZE + HALF_TILE_SIZE;
+        int y = 10 * TILE_SIZE;
+        Fence cc = new Fence(x,y);
+        addObject(cc,x,y);
+
+    }
+    private void cCoin3(){
+
+        int x = 17 * TILE_SIZE + HALF_TILE_SIZE;
+        int y = 9 * TILE_SIZE;
+        Fence cc = new Fence(x,y);
         addObject(cc,x,y);
 
     }
