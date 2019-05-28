@@ -23,6 +23,13 @@ public class GroundBelow extends Decoration
      */
     public void act() 
     {
-        // Add your action code here.
+        
+        
+        setLocation(getX(), getY()+1);
+        if(isTouching(Hero.class)){
+            Greenfoot.stop();
+            
+        }
+        
     }    
 }

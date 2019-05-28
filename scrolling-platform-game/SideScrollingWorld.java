@@ -96,7 +96,9 @@ public class SideScrollingWorld extends World
         dontTouch4();
         dontTouch5();
         dontTouch6();
-        
+
+        addObject(new GroundBelow(100,100),1500,100);
+
 
     }
 
@@ -123,8 +125,12 @@ public class SideScrollingWorld extends World
             addObject(groundTile, x, y);
         }
     }
-    private void EvilClass(){
-        
+
+    private void evilClass(){
+        int y = 1;
+        y = y + 15;
+        GroundBelow evil = new GroundBelow(5*TILE_SIZE,y);
+        addObject(evil, 5*TILE_SIZE, y);
     }
 
     /**
@@ -215,7 +221,7 @@ public class SideScrollingWorld extends World
             y = 300;
 
         }
-        
+
     }
 
     /**
