@@ -16,19 +16,19 @@ public class EndScreen extends Actor
     {
         SideScrollingWorld world = (SideScrollingWorld)getWorld();
         if(world.score == 1){
-            world.addObject(new Cloud(100,100), 300,255);
-            
+            world.addObject(new Cloud(100,100), 300,265);
+
         }
         if(world.score == 2){
-            world.addObject(new Cloud(100,100), 300,255);
-            world.addObject(new Cloud(100,100), 320,255);
-            
+            world.addObject(new Cloud(100,100), 300,265);
+            world.addObject(new Cloud(100,100), 340,265);
+
         }
         if(world.score == 3){
-            world.addObject(new Cloud(100,100), 300,255);
-            world.addObject(new Cloud(100,100), 320,255);
-            world.addObject(new Cloud(100,100), 340,255);
-            
+            world.addObject(new Cloud(100,100), 300,265);
+            world.addObject(new Cloud(100,100), 340,265);
+            world.addObject(new Cloud(100,100), 380,265);
+
         }
     }    
 }

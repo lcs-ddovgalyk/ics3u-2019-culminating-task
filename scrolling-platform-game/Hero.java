@@ -177,6 +177,9 @@ public class Hero extends Actor
             // setLocation(getX(), correctedYPosition);
             // }
             Greenfoot.stop();
+            //SideScrollingWorld world = (SideScrollingWorld)getWorld();
+            //world.addObject(new LostScreen(), 320, 240);
+            
         }
         else
         {
@@ -540,7 +543,7 @@ public class Hero extends Actor
         int offScreenVerticalPosition = (world.getHeight() + this.getImage().getHeight() / 2);
 
         // Off bottom of screen?
-        if (this.getY() > offScreenVerticalPosition)
+        if (this.getY() > offScreenVerticalPosition + 5)
         {
             // Remove the hero
             isGameOver = true;

@@ -56,7 +56,7 @@ public class SideScrollingWorld extends World
 
         // Game on
         isGameOver = false;
-        
+
     }
 
     /**
@@ -71,7 +71,7 @@ public class SideScrollingWorld extends World
         // addClouds();
         // addRightGround();
         // Add some metal plates
-        
+
         for (int i = 0; i <= 60; i+= 1){
             int x = HALF_TILE_SIZE + i * TILE_SIZE;
             int y = 14 * TILE_SIZE + HALF_TILE_SIZE;
@@ -97,13 +97,9 @@ public class SideScrollingWorld extends World
         dontTouch4();
         dontTouch5();
         dontTouch6();
-       
-        
 
         //addObject(new GroundBelow(100,100),1500,100);
-
     }
-
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */
@@ -221,9 +217,8 @@ public class SideScrollingWorld extends World
             addObject(end,320,240);
             x = 320;
             y = 300;
-
+            showText("", 100, 100);
         }
-        
 
     }
 
@@ -425,9 +420,6 @@ public class SideScrollingWorld extends World
         JustTheBottom bottom = new JustTheBottom(x,y);
         addObject(bottom,x,TILE_SIZE + HALF_TILE_SIZE);
     }
-
-    
-
 
     /**
      * Set game over
