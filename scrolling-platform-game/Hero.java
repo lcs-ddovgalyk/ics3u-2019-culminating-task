@@ -88,6 +88,7 @@ public class Hero extends Actor
 
         // Track animation frames for walking
         walkingFrames = 0;
+        
     }
 
     /**

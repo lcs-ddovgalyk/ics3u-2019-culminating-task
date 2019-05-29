@@ -56,7 +56,7 @@ public class SideScrollingWorld extends World
 
         // Game on
         isGameOver = false;
-
+        
     }
 
     /**
@@ -71,6 +71,7 @@ public class SideScrollingWorld extends World
         // addClouds();
         // addRightGround();
         // Add some metal plates
+        
         for (int i = 0; i <= 60; i+= 1){
             int x = HALF_TILE_SIZE + i * TILE_SIZE;
             int y = 14 * TILE_SIZE + HALF_TILE_SIZE;
@@ -96,9 +97,10 @@ public class SideScrollingWorld extends World
         dontTouch4();
         dontTouch5();
         dontTouch6();
+       
+        
 
-        addObject(new GroundBelow(100,100),1500,100);
-
+        //addObject(new GroundBelow(100,100),1500,100);
 
     }
 
@@ -221,6 +223,7 @@ public class SideScrollingWorld extends World
             y = 300;
 
         }
+        
 
     }
 
@@ -422,6 +425,9 @@ public class SideScrollingWorld extends World
         JustTheBottom bottom = new JustTheBottom(x,y);
         addObject(bottom,x,TILE_SIZE + HALF_TILE_SIZE);
     }
+
+    
+
 
     /**
      * Set game over
