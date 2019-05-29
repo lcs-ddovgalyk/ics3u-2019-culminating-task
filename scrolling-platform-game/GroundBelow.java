@@ -19,6 +19,7 @@ public class GroundBelow extends Decoration
     GroundBelow(int scrollableWorldX, int scrollableWorldY)
     {
         super(scrollableWorldX, scrollableWorldY);
+        // the actor turns to the right 
         turn(90);
         
     }    
@@ -29,13 +30,17 @@ public class GroundBelow extends Decoration
      */
     public void act() 
     {
-       
+        //this is only when the actor is at the edge
         if(isAtEdge()){
+            //makes the speed negative for the actor to move in the opposite direction when it hits the edfe
             speed = speed * -1;
 
         }
+        //what makes the actor move
         move(speed);
+        //if the actor touches the Hero class then
         if(isTouching(Hero.class)){
+            //stops the game
             Greenfoot.stop();
         }
 

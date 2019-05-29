@@ -104,15 +104,19 @@ public class Hero extends Actor
         {
             checkGameOver();
         }
+        //check the collision
         checkCollision();
         if(isTouching(Fence.class)){
+            //removes the touching class
             removeTouching(Fence.class);
+            //get's a reference to the world
             SideScrollingWorld world = (SideScrollingWorld)getWorld();
+            // adds one point to the score
             world.score = world.score + 1;
+            //when collects the coin play the sound
             Greenfoot.playSound("sfx_point.wav");
 
         }
-        checkWhereHeroIs();
     }
 
     /**
@@ -126,7 +130,7 @@ public class Hero extends Actor
         // Jumping
         if (Greenfoot.isKeyDown("space") && !isGameOver)
         {
-            // Only able to jump when on a solid object
+            //makes the hero jump
 
             jump();
 

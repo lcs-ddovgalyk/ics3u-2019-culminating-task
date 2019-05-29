@@ -14,16 +14,22 @@ public class EndScreen extends Actor
      */
     public void act() 
     {
+        //get's a reference to the world
         SideScrollingWorld world = (SideScrollingWorld)getWorld();
+        //if the player collected only 1 coin then
         if(world.score == 1){
             world.addObject(new Cloud(100,100), 300,265);
 
         }
+        //if the player collected only 2 coin then
+
         if(world.score == 2){
             world.addObject(new Cloud(100,100), 300,265);
             world.addObject(new Cloud(100,100), 340,265);
 
         }
+        //if the player collected only 3 coin then
+
         if(world.score == 3){
             world.addObject(new Cloud(100,100), 300,265);
             world.addObject(new Cloud(100,100), 340,265);

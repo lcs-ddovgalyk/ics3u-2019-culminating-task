@@ -89,10 +89,13 @@ public class SideScrollingWorld extends World
 
         }
 
+        //adds a hero to the game
         addHero();
+        //adds coins to the game
         cCoin();
         cCoin2();
         cCoin3();
+        //adds pipes to the game
         dontTouch();
         dontTouch2();
         dontTouch3();
@@ -127,12 +130,7 @@ public class SideScrollingWorld extends World
         }
     }
 
-    private void evilClass(){
-        int y = 1;
-        y = y + 15;
-        GroundBelow evil = new GroundBelow(5*TILE_SIZE,y);
-        addObject(evil, 5*TILE_SIZE, y);
-    }
+   
 
     /**
      * Add some fences at left and right side.
@@ -201,39 +199,44 @@ public class SideScrollingWorld extends World
         int x = 200;
         int y = 100;
         showText("Coins collected: ", 100, 100);
+        //adds 1 every time an act method runs
         time = time + 1;
-        showText("Time: " + time, 600, 100);
+        showText("Time: " + time, 540, 100);
 
         Cloud scorecoin = new Cloud(x,y);
+        //when the score is equal to 1 it will show you how many coins you have collected in the upper left corner
         if(score == 1){
-            addObject(scorecoin,200,100);
+            addObject(scorecoin,200,150);
 
         }
+        //when the score is equal to 1 it will show you how many coins you have collected in the upper left corner
+
         if(score == 2){
-            addObject(scorecoin,220,100);
+            addObject(scorecoin,220,150);
 
         }
+        //when the score is equal to 1 it will show you how many coins you have collected in the upper left corner
+
         if(score == 3){
-            addObject(scorecoin,240,100);
+            addObject(scorecoin,240,150);
 
         }
         //creates an end screen that shows up when you win the game.
         if(isGameOver == true){
             EndScreen end = new EndScreen();
-            //
+            // adds an end screen to the game
             addObject(end,320,240);
             x = 320;
             y = 300;
             //removes the text from the upper left corver
             showText("", 100, 100);
         }
+        //after time is equal to 200 the method will add an object
         if(time == 200){
             addObject(new GroundBelow(1,1), 1000, 200);
         }
-        
 
     }
-
     /**
      * Add the hero to the world.
      */
