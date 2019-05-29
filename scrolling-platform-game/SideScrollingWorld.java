@@ -212,11 +212,14 @@ public class SideScrollingWorld extends World
             addObject(scorecoin,240,100);
 
         }
+        //creates an end screen that shows up when you win the game.
         if(isGameOver == true){
             EndScreen end = new EndScreen();
+            //
             addObject(end,320,240);
             x = 320;
             y = 300;
+            //removes the text from the upper left corver
             showText("", 100, 100);
         }
 

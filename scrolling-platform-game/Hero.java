@@ -49,7 +49,6 @@ public class Hero extends Actor
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
 
-
     /**
      * Constructor
      * 
@@ -88,7 +87,7 @@ public class Hero extends Actor
 
         // Track animation frames for walking
         walkingFrames = 0;
-        
+
     }
 
     /**
@@ -110,10 +109,10 @@ public class Hero extends Actor
             removeTouching(Fence.class);
             SideScrollingWorld world = (SideScrollingWorld)getWorld();
             world.score = world.score + 1;
+            Greenfoot.playSound("sfx_point.wav");
 
-            
         }
-
+        checkWhereHeroIs();
     }
 
     /**
@@ -179,7 +178,8 @@ public class Hero extends Actor
             Greenfoot.stop();
             //SideScrollingWorld world = (SideScrollingWorld)getWorld();
             //world.addObject(new LostScreen(), 320, 240);
-            
+            Greenfoot.playSound("sfx_hit.wav");
+
         }
         else
         {
@@ -202,7 +202,6 @@ public class Hero extends Actor
         Actor rearAbove = getOneObjectAtOffset(0 - getImage().getWidth() / 3, -1 * getImage().getHeight() / 2, Platform.class);
         //Get a reference to a solid object in front of the hero
         Actor directlyInFront = getOneObjectAtOffset(getImage().getWidth() / 2, 0 ,Platform.class);
-
 
         // If there is no solid object below (or slightly in front of or behind) or above or in front the hero...
         if (directlyUnder == null &&
@@ -236,10 +235,12 @@ public class Hero extends Actor
         if (horizontalDirection == FACING_RIGHT)
         {
             setImage("hero-jump-up-right.png");
+
         }
         else
         {
             setImage("hero-jump-up-left.png");
+
         }
 
         // Change the vertical speed to the power of the jump
@@ -328,6 +329,7 @@ public class Hero extends Actor
             if (verticalDirection == JUMPING_UP)
             {
                 setImage("hero-jump-up-right.png");
+
             }
             else
             {
@@ -371,9 +373,7 @@ public class Hero extends Actor
                 isGameOver = true;
                 world.setGameOver();
 
-                                
             }
-
         }
         else
         {
@@ -425,101 +425,6 @@ public class Hero extends Actor
      */
     public void moveLeft()
     {
-        // Track direction
-        horizontalDirection = FACING_LEFT;
-
-        // Set image 
-        if (onPlatform())
-        {
-            animateWalk(horizontalDirection);
-        }
-        else
-        {
-            // Set appropriate jumping image
-            if (verticalDirection == JUMPING_UP)
-            {
-                setImage("hero-jump-up-left.png");
-            }
-            else
-            {
-                setImage("hero-jump-down-left.png");
-            }
-        }
-
-        // Get object reference to world
-        SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
-
-        // Decide whether to actually move, or make world's tiles move
-        if (currentScrollableWorldXPosition - deltaX < world.HALF_VISIBLE_WIDTH)
-        {
-            // HERO IS WITHIN EXTREME LEFT PORTION OF SCROLLABLE WORLD
-            // So... actually move the actor within the visible world.
-
-            // Don't let hero go off left edge of scrollable world 
-            // (Allow movement only when not at left edge)
-            if (currentScrollableWorldXPosition > 0)
-            {
-                // Move left in visible world
-                int newVisibleWorldXPosition = getX() - deltaX;
-                setLocation(newVisibleWorldXPosition, getY());
-
-                // Track position in wider scrolling world
-                currentScrollableWorldXPosition = getX();
-            }            
-        }
-        else if (currentScrollableWorldXPosition + deltaX * 2 > world.SCROLLABLE_WIDTH - world.HALF_VISIBLE_WIDTH)
-        {
-            // HERO IS WITHIN EXTREME RIGHT PORTION OF SCROLLABLE WORLD
-            // So... actually move the actor within the visible world.
-
-            // Move left in visible world
-            int newVisibleWorldXPosition = getX() - deltaX;
-            setLocation(newVisibleWorldXPosition, getY());
-
-            // Track position in wider scrolling world
-            currentScrollableWorldXPosition -= deltaX;
-        }        
-        else
-        {
-            // HERO IS BETWEEN LEFT AND RIGHT PORTIONS OF SCROLLABLE WORLD
-            // So... we move the other objects to create illusion of hero moving
-
-            // Track position in wider scrolling world
-            currentScrollableWorldXPosition -= deltaX;
-
-            // Get a list of all platforms (objects that need to move
-            // to make hero look like they are moving)
-            List<Platform> platforms = world.getObjects(Platform.class);
-
-            // Move all the platform objects at same speed as hero
-            for (Platform platform : platforms)
-            {
-                // Platforms move right to make hero appear to move left
-                platform.moveRight(deltaX);
-            }
-
-            // Get a list of all decorations (objects that need to move
-            // to make hero look like they are moving)
-            List<Decoration> decorations = world.getObjects(Decoration.class);
-
-            // Move all the decoration objects to make it look like hero is moving
-            for (Decoration decoration: decorations)
-            {
-                // Platforms move right to make hero appear to move left
-                decoration.moveRight(deltaX);
-            }
-
-            // Get a list of all items that are in the distance (far away items)
-            List<FarAwayItem> farAwayItems = world.getObjects(FarAwayItem.class);
-
-            // Move all the FarAwayItem objects at one quarter speed as hero to create depth illusion
-            for (FarAwayItem farAwayItem : farAwayItems)
-            {
-                // FarAwayItems move right to make hero appear to move left
-                farAwayItem.moveRight(deltaX / 4);
-            }
-
-        } 
 
     }
 
@@ -528,6 +433,16 @@ public class Hero extends Actor
         //  Greenfoot.stop();
 
         //}
+    }
+
+    public void checkWhereHeroIs(){
+        getX();
+
+        if(getX() > 680){
+            SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
+            world.addObject(new GroundBelow(1000,100), 1000, 100);
+
+        }
     }
 
     /**
