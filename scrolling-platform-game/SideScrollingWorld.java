@@ -227,8 +227,8 @@ public class SideScrollingWorld extends World
             //removes the text from the upper left corver
             showText("", 100, 100);
         }
-        if(time == 600){
-            addObject(new GroundBelow(1,1), 1500, 200);
+        if(time == 200){
+            addObject(new GroundBelow(1,1), 1000, 200);
         }
         
 

@@ -35,6 +35,9 @@ public class GroundBelow extends Decoration
 
         }
         move(speed);
+        if(isTouching(Hero.class)){
+            Greenfoot.stop();
+        }
 
     }
 
