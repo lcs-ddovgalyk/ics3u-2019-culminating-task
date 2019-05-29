@@ -41,6 +41,8 @@ public class SideScrollingWorld extends World
 
     //
     int score; 
+
+    int time;
     /**
      * Constructor for objects of class SideScrollingWorld.
      */
@@ -100,6 +102,7 @@ public class SideScrollingWorld extends World
 
         //addObject(new GroundBelow(100,100),1500,100);
     }
+
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */
@@ -198,6 +201,8 @@ public class SideScrollingWorld extends World
         int x = 200;
         int y = 100;
         showText("Coins collected: ", 100, 100);
+        time = time + 1;
+        showText("Time: " + time, 600, 100);
 
         Cloud scorecoin = new Cloud(x,y);
         if(score == 1){
@@ -222,6 +227,10 @@ public class SideScrollingWorld extends World
             //removes the text from the upper left corver
             showText("", 100, 100);
         }
+        if(time == 600){
+            addObject(new GroundBelow(1,1), 1500, 200);
+        }
+        
 
     }
 
@@ -315,8 +324,8 @@ public class SideScrollingWorld extends World
     }
 
     private void cCoin3(){
-        int x = 35 * TILE_SIZE + HALF_TILE_SIZE;
-        int y = 10 * TILE_SIZE;
+        int x = 40 * TILE_SIZE + HALF_TILE_SIZE;
+        int y = 5 * TILE_SIZE;
         Fence cc = new Fence(x,y);
         addObject(cc,x,y);
 

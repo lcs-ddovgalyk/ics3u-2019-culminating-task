@@ -13,18 +13,29 @@ public class GroundBelow extends Decoration
      * 
      * Called once when object is created.
      */
+    int speed = 3;
+
+    
     GroundBelow(int scrollableWorldX, int scrollableWorldY)
     {
         super(scrollableWorldX, scrollableWorldY);
+        turn(90);
+        
     }    
+
     /**
      * Act - do whatever the GroundBelow wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        
-        
-        
-    }    
+       
+        if(isAtEdge()){
+            speed = speed * -1;
+
+        }
+        move(speed);
+
+    }
+
 }
